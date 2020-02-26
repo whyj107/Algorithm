@@ -12,6 +12,8 @@ for _ in range(N):
 for c in people:
     rank = 1
     for n in people:
+        # c 보다 n이 몸무게와 키가 더 크면 덩치가 작은 것 이기 때문에
+        # rank를 하나씩 올림
         if (c[0] != n[0]) & (c[1] != n[1]):
             if (c[0] < n[0]) & (c[1] < n[1]):
                 rank += 1
