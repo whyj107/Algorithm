@@ -6,6 +6,8 @@ class Node:
         self.right = None
 
 # 전위 순휘 알고리즘(Preorder Traverse)
+# 가운데 노드를 먼저 방문하고 그 다음에는 왼쪽 노드를 방문하고
+# 그리고 나서 오른쪽 노드를 방문하는 방법
 def preorder_traverse(node):
     if node == None: return
     print(node.data, end=' -> ')

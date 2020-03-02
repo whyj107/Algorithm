@@ -7,6 +7,7 @@ class Node:
 
 levelq = []
 # 단계 순위 순회 알고리즘(Levelorder Traverse)
+# 단계 순서대로 왼쪽부터 오른쪽으로 방문하는 순회 알고리즘
 def levelorder_traverse(node):
     global levelq
     levelq.append(node)

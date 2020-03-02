@@ -6,6 +6,7 @@ class Node:
         self.right = None
 
 # 후위 순회 알고리즘(Postorder Traverse)
+# 왼쪽 자식 노드를 방문하고 다음에 오른쪽 자식 노드를 방문한 후에 마지막으로 부모 노드를 방문하는 알고리즘
 def postorder_traverse(node):
     if node == None: return
     postorder_traverse(node.left)

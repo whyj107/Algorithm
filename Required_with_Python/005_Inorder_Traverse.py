@@ -6,6 +6,7 @@ class Node:
         self.right = None
 
 # 중위 순회 알고리즘(Inorder Traverse)
+# 왼쪽 자식 노드를 방문하고 그 다음 부모 노드를 방문한 후 다시 오른쪽 자식 노드를 방문하는 알고리즘
 def inorder_traverse(node):
     if node == None: return
     inorder_traverse(node.left)
