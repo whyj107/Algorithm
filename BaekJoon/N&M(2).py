@@ -1,11 +1,7 @@
+# N&M(1)과 유사한데 재귀할 때 idx+1을 해줘서 중복을 방지한다.
 import sys
 
-def testCase():
-    input_val = list(map(int, sys.stdin.readline().split()))
-    global N, M
-    N, M = input_val
-
-def solve(remain, result=[]):
+def dfs(remain, result=[]):
     if len(result) == M:
         for r in result:
             print(r, end=' ')
@@ -14,9 +10,10 @@ def solve(remain, result=[]):
 
     for idx in range(len(remain)):
         result.append(remain[idx])
-        solve(remain[idx+1:], result)
+        dfs(remain[idx+1:], result)
         result.pop(-1)
 
 if __name__=='__main__':
-    testCase()
-    solve(range(1, N+1))
+    global N, M
+    N, M = map(int, sys.stdin.readline().split())
+    dfs(range(1, N+1))
