@@ -14,8 +14,13 @@ def dfs(remain, result=[]):
     # dfs 핵심
     for idx in range(len(remain)):
         # remain[len(remain)] 일 경우 추가되는 값은 없음
-        result.append(remain[idx])
+        r = remain[idx]
+        remain.remove(r)
+        result.append(r)
+
         dfs(remain, result)
+        remain.append(r)
+        remain.sort()
         result.pop(-1)
 
 if __name__=='__main__':
