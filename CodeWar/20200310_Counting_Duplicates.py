@@ -24,7 +24,7 @@
 # 문자열.count('개수 세고싶은 문자')
 
 # text.lower() : 문자열 소문자로 변경
-# st(text.lower()) : 중복 제거
+# set(text.lower()) : 중복 제거
 # --------------------------
 
 # My Code
