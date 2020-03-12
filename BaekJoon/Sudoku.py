@@ -1,53 +1,57 @@
-# 가로 체크
-def horizontal(x, val):
-    if val in sudoku[x]:
-        return False
-    return True
+import sys
+sudoku = []
+zero = []
+S_SIZE = 9
+Z_SIZE = 0
+END_FLAG = False
 
-# 세로 체크
-def vertical(y, val):
-    for i in range(9):
-        if val == sudoku[i][y]:
-            return False
-    return True
+for i in range(S_SIZE):
+    sudoku.append(sys.stdin.readline().split())
+    for j in range(S_SIZE):
+        if sudoku[i][j] == '0':
+            zero.append([i, j])
+            Z_SIZE += 1
 
-# 3x3 체크
-def threebythree(x, y, val):
-    nx = x // 3 * 3
-    ny = y // 3 * 3
-    for i in range(3):
-        for j in range(3):
-            if val == sudoku[nx+i][ny+i]:
-                return False
-    return True
+def get_possible(zero):
+    a, b = zero
+    nums = list(map(str, range(1, 10)))
+    for i in range(S_SIZE):
+        if sudoku[a][i] in nums:
+            nums.remove(sudoku[a][i])
+        if sudoku[i][b] in nums:
+            nums.remove(sudoku[i][b])
 
-def dfs1(index):
-    if index == len(zeros):
-        for row in sudoku:
-            for n in row:
-                print(n, end=" ")
-            print()
+    if len(nums) > 0:
+        rt = (a // 3) * 3
+        ct = (b // 3) * 3
+
+        for i in range(rt, rt+3):
+            for j in range(ct, ct+3):
+                if sudoku[i][j] in nums:
+                    nums.remove(sudoku[i][j])
+
+    return nums
+
+def solve(idx):
+    if idx == Z_SIZE:
+        global END_FLAG
+        END_FLAG = True
         return
-    else:
-        for i in range(1, 10):
-            nx = zeros[index][0]
-            ny = zeros[index][1]
 
-            if horizontal(nx, i) and vertical(ny, i) and threebythree(nx, ny, i):
-                sudoku[nx][ny] = i
-                dfs1(index + 1)
-                sudoku[nx][ny] = 0
+    global sudoku
+    a, b = zero[idx]
+    possible = get_possible(zero[idx])
 
-if __name__=='__main__':
-    global sudoku, zeros
+    for p in possible:
+        sudoku[a][b] = p
+        solve(idx+1)
+        if END_FLAG:
+            return
 
-    sudoku = []
+    if END_FLAG == False:
+        sudoku[a][b] = '0'
 
-    flag = False
+solve(0)
 
-    for n in range(9):
-        sudoku.append(list(map(int, input().split())))
-
-    zeros = [(i, j) for i in range(9) for j in range(9) if sudoku[i][j] == 0]
-
-    dfs1(0)
+for s in sudoku:
+    print(' '.join(s))
