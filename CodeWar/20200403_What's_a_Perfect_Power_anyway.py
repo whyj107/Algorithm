@@ -18,7 +18,7 @@
 
 # My Code
 import math
-# 에라토스테네스 체 이용 - 소수가 아닌 수는 결국 깔끔하게 짝이 안지어질 확률이 높으니까
+# 에라토스테네스 체 응용
 def isPP(n):
     # 효율적으로 코딩하기 위해서는 n의 제곱근까지만 확인
     for m in range(2, int(math.sqrt(n)) + 1):
