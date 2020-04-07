@@ -21,6 +21,7 @@
 # My Code
 def removNb(n):
     answer = []
+    # 가우스의 법칙
     sum = int((n+1)*n/2)
     # a를 1부터 n 만큼 증가시키면서 b를 찾는다.
     for a in range(1, n+1):
