@@ -14,14 +14,26 @@
 # test.assert_equals(flatten(['hello',2,['text',[4,5]]],[[]],'[list]'),['hello',2,'text',4,5,'[list]'])
 
 # My Code
-def flatten(*ary, answer=[]):
+def flatten(*ary):
+    answer = []
     for i in ary:
         if type(i) == list:
-            flatten(*i)
+            tmp = flatten(*i)
+            for j in tmp:
+                answer.append(j)
         else:
             answer.append(i)
     return answer
 
+# Warriors Code
+def flatten1(*a):
+    r = []
+    for x in a:
+        if isinstance(x, list):
+            r.extend(flatten(*x))
+        else:
+            r.append(x)
+    return r
 
 if __name__ == '__main__':
     print(flatten(), [])
