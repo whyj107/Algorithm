@@ -23,7 +23,7 @@
 # test.assert_equals(solution(1989),'MCMLXXXIX', "solution(1989),'MCMLXXXIX'")
 
 # My Code
-def solution(n):
+def solution0(n):
     roman = {1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M'}
     answer = ''
     if n in roman:
@@ -76,7 +76,20 @@ vals = zip(('M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I
 
 def solution1(n):
     if n == 0: return ""
-    return next(c + solution(n-v) for c,v in vals if v <= n)
+    return next(c + solution1(n-v) for c,v in vals if v <= n)
+
+def solution(n):
+    roman = {1: 'I', 4: 'IV', 5: 'V', 9:'IX',
+             10: 'X', 40: 'XL', 50: 'L', 90: 'XC',
+             100: 'C', 400: 'CD', 500: 'D', 900: 'CM',
+             1000: 'M'}
+    answer = ""
+    for i in reversed(sorted((roman.keys()))):
+        while i <= n:
+            n -= i
+            answer += roman[i]
+    return answer
+
 
 if __name__ == '__main__':
     print(solution(1000))
