@@ -1,6 +1,6 @@
 import math
 a, b, v = map(int, input().split())
-answer = (v-b)/(a-b)
+answer = (v-a)/(a-b)
 print(math.ceil(answer))
 
 #if answer == int(answer):
