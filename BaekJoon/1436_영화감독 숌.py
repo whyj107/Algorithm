@@ -20,3 +20,6 @@ if (tmp - 1) == 0:
     print(666)
 else:
     print(tmp-1, 666, sep='')
+
+if __name__ == '__main__':
+    print([i for i in range(9 ** 7) if "666" in str(i)][int(input()) - 1])
