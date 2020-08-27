@@ -14,6 +14,7 @@ def solve(triangle):
             else:
                 answer[i].append(triangle[i][j] + max(answer[i + 1][j], answer[i + 1][j + 1]))
     # 정답 출력
+    print(answer)
     print(answer[0][0])
 
 if __name__=='__main__':
