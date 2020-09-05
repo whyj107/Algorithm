@@ -7,19 +7,13 @@ def solution(s):
     answer = len(s)
     for i in range(1, len(s)+1):
         tmp = [s[j:j+i] for j in range(0, len(s), i)]
-        n = ''
-        cnt = 1
+        n, cnt = '', 1
         for j in range(len(tmp)-1):
-            if tmp[j] == tmp[j+1]:
-                cnt += 1
+            if tmp[j] == tmp[j+1]: cnt += 1
             else:
-                if cnt == 1:
-                    cnt = ''
-                n += (str(cnt)+str(tmp[j]))
+                n += (str('' if cnt == 1 else cnt)+str(tmp[j]))
                 cnt = 1
-        if cnt == 1:
-            cnt = ''
-        n += (str(cnt) + str(tmp[-1]))
+        n += (str('' if cnt == 1 else cnt) + str(tmp[-1]))
         answer = min(answer, len(n))
     return answer
 
@@ -43,7 +37,12 @@ def solution1(text):
 
 if __name__ == '__main__':
     print(solution("aabbaccc"), 7)
+    print('--------------------------------')
     print(solution("ababcdcdababcdcd"), 9)
+    print('--------------------------------')
     print(solution("abcabcdede"), 8)
+    print('--------------------------------')
     print(solution("abcabcabcabcdededededede"), 14)
+    print('--------------------------------')
     print(solution("xababcdcdababcdcd"), 17)
+    print('--------------------------------')
