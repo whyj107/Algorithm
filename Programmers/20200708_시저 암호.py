@@ -3,9 +3,15 @@
 # https://programmers.co.kr/learn/courses/30/lessons/12926?language=python3
 
 # 나의 풀이
-def solution(s, n):
+def solution0(s, n):
     sma = [chr(c) for c in range(ord('a'), ord('z')+1)]
     big = [chr(c) for c in range(ord('A'), ord('Z')+1)]
+    return ''.join([i if i == ' ' else (sma[(sma.index(i) + n) % 26] if i in sma else big[(big.index(i) + n) % 26]) for i in s])
+
+import string
+def solution(s, n):
+    sma = string.ascii_lowercase
+    big = string.ascii_uppercase
     return ''.join([i if i == ' ' else (sma[(sma.index(i) + n) % 26] if i in sma else big[(big.index(i) + n) % 26]) for i in s])
 
 # 다른 사람의 풀이
