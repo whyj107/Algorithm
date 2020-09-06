@@ -4,11 +4,11 @@
 
 # 나의 풀이
 def solution(x):
-    return x%sum([int(i) for i in str(x)]) == 0
+    return x % sum([int(i) for i in str(x)]) == 0
 
 # 다른 사람의 풀이
 def Harshad(n):
-    return not( n % sum([int(x) for x in str(n)]))
+    return not(n % sum([int(x) for x in str(n)]))
 
 if __name__ == '__main__':
     print(solution(10), True)
