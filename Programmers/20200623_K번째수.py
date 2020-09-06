@@ -6,12 +6,8 @@
 def solution(array, commands):
     answer = []
     for c in commands:
-        i = c[0]
-        j = c[1]
-        k = c[2]
-
-        tmp = array[i-1:j]
-        tmp.sort()
+        i, j, k = c
+        tmp = sorted(array[i-1:j])
         answer.append(tmp[k-1])
     return answer
 
