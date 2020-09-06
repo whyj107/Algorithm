@@ -6,7 +6,6 @@
 def solution (arrangement):
     l = []
     answer = 0
-
     for i in arrangement:
         if i == "(":
             l.append(i)
