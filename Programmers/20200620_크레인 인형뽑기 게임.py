@@ -3,7 +3,7 @@
 # https://programmers.co.kr/learn/courses/30/lessons/64061?language=python3#
 
 # 나의 풀이
-def solution(board, moves):
+def solution0(board, moves):
     basket = [0]
     answer = 0
     for i in range(len(moves)):
@@ -17,6 +17,23 @@ def solution(board, moves):
                     basket.append(sero[j])
 
                 board[j][moves[i] - 1] = 0
+                break
+    return answer
+
+# upgrade
+def solution(board, moves):
+    basket, answer = [], 0
+    for i in moves:
+        for j in range(len(board)):
+            sero = list(zip(*board))[i - 1]
+            if sero[j] != 0:
+                if basket and basket[-1] == sero[j]:
+                    basket.pop()
+                    answer += 2
+                else:
+                    basket.append(sero[j])
+
+                board[j][i - 1] = 0
                 break
     return answer
 
@@ -45,4 +62,4 @@ if __name__ == '__main__':
                     [0, 0, 1, 0, 3],
                     [0, 2, 5, 0, 1],
                     [4, 2, 4, 4, 2],
-                    [3, 5, 1, 3, 1]], [1, 5, 3, 5, 1, 2, 1, 4]))
+                    [3, 5, 1, 3, 1]], [1, 5, 3, 5, 1, 2, 1, 4]), 4)
