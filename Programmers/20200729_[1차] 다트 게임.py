@@ -4,11 +4,9 @@
 
 # 나의 풀이
 def solution(dartResult):
-    answer = 0
-    pre_num = 0
-    num = 0
-    tmp = {'S': lambda x: x, 'D': lambda x: x**2, 'T': lambda x: x**3,
-           '*': lambda x: 2*x, '#': lambda x: -x}
+    answer, pre_num, num = 0, 0, 0
+    tmp = {'S': lambda x: x,    'D': lambda x: x**2, 'T': lambda x: x**3,
+           '*': lambda x: 2*x,  '#': lambda x: -x}
     for idx, i in enumerate(dartResult+'!'):
         if i.isdigit():
             if dartResult[idx-1].isdigit():
@@ -27,17 +25,15 @@ def solution(dartResult):
 
 # 다른 사람의 풀이
 import re
-
 def solution1(dartResult):
-    bonus = {'S' : 1, 'D' : 2, 'T' : 3}
-    option = {'' : 1, '*' : 2, '#' : -1}
+    bonus = {'S': 1, 'D': 2, 'T': 3}
+    option = {'': 1, '*': 2, '#': -1}
     p = re.compile('(\d+)([SDT])([*#]?)')
     dart = p.findall(dartResult)
     for i in range(len(dart)):
         if dart[i][2] == '*' and i > 0:
             dart[i-1] *= 2
         dart[i] = int(dart[i][0]) ** bonus[dart[i][1]] * option[dart[i][2]]
-
     answer = sum(dart)
     return answer
 
