@@ -15,7 +15,9 @@ for i in range(line):
         result[i].append(AB_line[i][1])
     else:
         for j in range(0, i):
+            tmp, tmp1 = result[j][-1], AB_line[i][1]
             if result[j][-1] < AB_line[i][1]:
+                tmp2, tmp3 = len(result[i])-1, len(result[j])
                 if len(result[i])-1 < len(result[j]):
                     result[i] = result[j]+[AB_line[i][1]]
         if not result[i]:

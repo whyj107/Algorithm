@@ -7,12 +7,11 @@ def solv(N, S, team):
 
     for i in range(len(team) // 2):
         # start 팀
-        team_start = team[i]
-        start_sum = 0
+        team_start, start_sum = team[i], 0
 
         # link 팀
-        team_link = team[-i - 1]
-        link_sum = 0
+        team_link, link_sum = team[-i - 1], 0
+
         for j in range(N // 2):
             member_s = team_start[j]
             member_l = team_link[j]

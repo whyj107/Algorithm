@@ -5,15 +5,14 @@ def solve(i):
         return
 
     for j in range(n):
-        tmp = i+j
-        tm = i-j+n-1
-        if not (a[j] or b[i+j] or c[i-j+n-1]):
+        tmp, tm = i+j, i-j+n-1
+        if not (a[j] or b[tmp] or c[tm]):
             # 모두 거짓이면 실행
-            a[j] = b[i+j] = c[i-j+n-1] = True
+            a[j] = b[tmp] = c[tm] = True
             # 재귀로 유효한지 확인하고
             solve(i + 1)
             # 유효하지 않으면 부모로 가서 False
-            a[j] = b[i+j] = c[i-j+n-1] = False
+            a[j] = b[tmp] = c[tm] = False
 
 if __name__=='__main__':
     n = int(input())
@@ -38,6 +37,6 @@ if __name__=='__main__':
 
     solve(0)
     print(ans)
-# python3으로 제출하면 시간 오류가 발생하므로 아래와 같이 편법도 있다.
+    # python3으로 제출하면 시간 오류가 발생하므로 아래와 같이 편법도 있다.
     answer = (0, 1, 0, 0, 2, 10, 4, 40, 92, 352, 724, 2680, 14200, 73712, 365596)
     print(answer[int(input())])

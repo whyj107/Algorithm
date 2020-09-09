@@ -8,8 +8,7 @@ N, M = map(int, input().split(' '))
 B = [list(sys.stdin.readline().rstrip()) for _ in range(N)]
 
 def block_cnt(i, j):
-    cntWB = 0
-    cntBW = 0
+    cntWB, cntBW = 0, 0
 
     # 각 칸마다 무슨 색인지 cntWB와 cntBW에 기록
     # 8x8 중에서 짝수와 홀수로 나누어서 cntWB와 cntBW로 구분하여 저장 후 값 return
