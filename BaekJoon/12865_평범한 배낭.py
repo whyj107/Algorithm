@@ -20,11 +20,12 @@ def solve(N, K, lst):
     for i in range(N):
         for j in range(K, 1, -1):
             if lst[i][0] <= j:
-                t = j-lst[i][0]+lst[i][1]
+                tm = tmp[j-lst[i][0]]
+                t = tmp[j-lst[i][0]]+lst[i][1]
                 tmp[j] = max(tmp[j], tmp[j-lst[i][0]]+lst[i][1])
     return tmp[-1]
 
 N, K = map(int, input().split(' '))
 lst = [list(map(int, input().split(' '))) for i in range(N)]
 lst.insert(0, [0, 0])
-print(solve0(N, K, lst))
+print(solve(N, K, lst))
