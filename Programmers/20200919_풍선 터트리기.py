@@ -1,3 +1,7 @@
+# 문제
+# 풍선 터트리기
+# https://programmers.co.kr/learn/courses/30/lessons/68646?language=python3
+
 # 시간 초과...
 def solution1(a):
     answer = 0
