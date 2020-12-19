@@ -3,6 +3,7 @@
 
 # 풀이
 def is_triangular(t):
+    # 피타고라스 형태를 이용하여 구하는 한 변의 길이
     x = int((t*2)**0.5)
     return t == x*(x+1)/2
 
